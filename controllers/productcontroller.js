@@ -102,7 +102,7 @@ exports.productDelete = async (req,res)=>{
     try{
         const {id} = req.params;
 
-        const deleteres = await productdata.findOneAndDelete({ id : id});
+        const deleteres = await productdata.findByIdAndDelete(id);
 
         res.status(200).json({
             status:true,
