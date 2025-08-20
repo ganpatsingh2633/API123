@@ -100,9 +100,9 @@ exports.productEdit = async (req,res) => {
 // For deleting product from list
 exports.productDelete = async (req,res)=>{
     try{
-        const {title} = req.params;
+        const {id} = req.params;
 
-        const deleteres = await productdata.findOneAndDelete({ title : title});
+        const deleteres = await productdata.findOneAndDelete({ id : id});
 
         res.status(200).json({
             status:true,
