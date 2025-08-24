@@ -1,22 +1,35 @@
 const mongoose = require('mongoose');
 
-const user = new mongoose.Schema({
-    title: {
-        type:String
-    },
-    description:{
-        type:String
-    },
-    sizes:{
-        type:Array
-    },
-    image:{
-        type:String
-    },
-    price: {
-        type:String
-    }
-});
+const productSchema = new mongoose.Schema({
+  title: {
+    type: String,
+    required: true,
+    trim: true
+  },
+  description: {
+    type: String,
+    trim: true
+  },
+  sizes: {
+    type: [String],
+    default: []
+  },
+  image: {
+    type: String,
+    trim: true
+  },
+  price: {
+    type: String,
+    required: true
+  },
+  category: {
+    type: String,
+    enum: ["Crushed Stone", "Sand", "Gravel", "Concrete", "Aggregate", "Other"],
+    required: true,
+    default: "Other"
+  }
+}, { timestamps: true });
 
-const users = mongoose.model('crusher-stone',user);
-module.exports= users;
+const Product = mongoose.model('crusher-stone', productSchema);
+
+module.exports = Product;

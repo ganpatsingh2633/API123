@@ -8,7 +8,8 @@ exports.productPost  = async (req, res) =>{
             description,
             sizes,
             image,
-            price
+            price,
+            category
         }= req.body; 
 
         const newproduct = new productdata({
@@ -16,7 +17,8 @@ exports.productPost  = async (req, res) =>{
             description,
             sizes,
             image,
-            price
+            price,
+            category
         });
 
         await newproduct.save();
@@ -65,7 +67,8 @@ exports.productEdit = async (req,res) => {
             description,
             sizes,
             image,
-            price
+            price,
+            category
         } = req.body;
 
         const productedit = await productdata.findById(id);
@@ -81,6 +84,7 @@ exports.productEdit = async (req,res) => {
         productedit.sizes = sizes;
         productedit.image = image;
         productedit.price = price;
+        productedit.category = category;
 
         const updatedata = await productedit.save();
 
