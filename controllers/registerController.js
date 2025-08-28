@@ -110,6 +110,32 @@ exports.registerGet = async (req, res) =>{
         }
 }
 
+//for get by email 
+exports.getuserbyemail = async (req, res) => {
+    try{
+        const {email} = req.params;
+        const user = await userdata.findOne({email});
+        if (!user) {
+            return res.status(404).json({
+                status : false,
+                messaage : "User not founs"
+            });
+        } 
+        res.status(200).json({
+            status : true,
+            data: user,
+        });
+    }
+    catch(error) {
+        res.status(500).json({
+            status : false,
+            messaage : "something went wrong",
+            error : error.messaage,
+        })
+    }
+
+};
+
 //edit (data modification)
 exports.registerEdit = async (req,res) => {
      try{
