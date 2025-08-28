@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const productSchema = new mongoose.Schema({
+const orderSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true,
@@ -11,7 +11,7 @@ const productSchema = new mongoose.Schema({
     trim: true
   },
   phone: {
-    type: number,
+    type: Number,
     required: true
   },
   product: {
