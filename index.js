@@ -16,6 +16,7 @@ const registerUser = require('./routes/registerroute'); // for register api....
 const stoneProduct = require('./routes/productroutes'); // for  stone crusher.....
 const qouteFrom = require('./routes/qouteRoute');
 const teamList = require('./routes/stoneTeamRoute');
+const orderList = require('./routes/orderroute');
 
 
 app.get('/', (req, res) => {
@@ -27,6 +28,7 @@ app.use("/api/user/register",registerUser);
 app.use("/api/stone/product",stoneProduct);
 app.use("/api/stone/quote",qouteFrom);
 app.use("/api/stone/team",teamList);
+app.use("/api/stone/order",orderList);
 
 connectDB();
 
